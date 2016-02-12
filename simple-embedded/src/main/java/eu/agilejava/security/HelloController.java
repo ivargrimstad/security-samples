@@ -27,10 +27,10 @@ import javax.inject.Inject;
 import javax.mvc.Models;
 import javax.mvc.annotation.Controller;
 import javax.mvc.annotation.View;
-import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.SecurityContext;
 
 /**
  *
@@ -44,19 +44,18 @@ public class HelloController {
     private Models models;
 
     @Context
-    private HttpServletRequest request;
+    private SecurityContext securityContext;
     
     @View("hello.jsp")
     @GET
     public void greet() {
 
-        if (request.getUserPrincipal() != null) {
-            models.put("user", request.getUserPrincipal().getName());
+        if (securityContext.getUserPrincipal() != null) {
+            models.put("user", securityContext.getUserPrincipal().getName());
         }
 
-        models.put("foo", request.isUserInRole("foo"));
-        models.put("bar", request.isUserInRole("bar"));
-        models.put("kaz", request.isUserInRole("kaz"));
-
+        models.put("hasFoo", securityContext.isUserInRole("foo"));
+        models.put("hasBar", securityContext.isUserInRole("bar"));
+        models.put("hasKaz", securityContext.isUserInRole("kaz"));
     }
 }

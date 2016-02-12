@@ -9,14 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Soteria MVC</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Soteria MVC</h1>
         
-        User: ${user}<br/>
-        Foo: ${foo}<br/>
-        Bar: ${bar}<br/>
-        Kaz: ${kaz}<br/>
+        Web username: <b>${user}</b><br/>
+        Web user has role "foo": <b>${hasFoo}</b><br/>
+        Web user has role "bar": <b>${hasBar}</b><br/>
+        Web user has role "kaz": <b>${hasKaz}</b><br/>
     </body>
 </html>
