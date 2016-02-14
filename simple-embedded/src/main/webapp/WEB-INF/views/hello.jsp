@@ -12,11 +12,17 @@
         <title>Soteria MVC</title>
     </head>
     <body>
-        <h1>Soteria MVC</h1>
+        <h1>Hello</h1>
         
         Web username: <b>${user}</b><br/>
         Web user has role "foo": <b>${hasFoo}</b><br/>
         Web user has role "bar": <b>${hasBar}</b><br/>
         Web user has role "kaz": <b>${hasKaz}</b><br/>
+        
+        <form name="form" action="${mvc.basePath}/login/logout" method="post">
+            <p>
+                <input type="submit" value="Logout" name="button"/>
+            </p>
+        </form>
     </body>
 </html>

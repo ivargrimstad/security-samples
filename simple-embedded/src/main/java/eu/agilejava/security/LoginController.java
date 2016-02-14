@@ -1,3 +1,20 @@
+package eu.agilejava.security;
+
+import javax.inject.Inject;
+import javax.mvc.Models;
+import javax.mvc.annotation.Controller;
+import javax.mvc.annotation.View;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
+
 /*
  * The MIT License
  *
@@ -21,39 +38,37 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package eu.agilejava.security;
-
-import java.util.HashSet;
-import java.util.Set;
-import javax.annotation.security.DeclareRoles;
-import javax.security.identitystore.annotation.Credentials;
-import javax.security.identitystore.annotation.EmbeddedIdentityStoreDefinition;
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
-
 /**
  *
  * @author Ivar Grimstad (ivar.grimstad@gmail.com)
  */
-@EmbeddedIdentityStoreDefinition({
-    @Credentials(callerName = "reza", password = "secret1", groups = {"foo", "bar"}),
-    @Credentials(callerName = "alex", password = "secret2", groups = {"foo", "kaz"}),
-    @Credentials(callerName = "arjan", password = "secret3", groups = {"foo"}),
-    @Credentials(callerName = "ivar", password = "secret4", groups = {"bar"})}
-)
-@DeclareRoles({"foo", "bar", "kaz"})
-@ApplicationPath("ui")
-public class ApplicationConfig extends Application {
+@Path("login")
+@Controller
+public class LoginController {
 
-    @Override
-    public Set<Class<?>> getClasses() {
+    @Inject
+    private Models models;
+    
+    @View("login.jsp")
+    @GET
+    public void loginForm(@QueryParam("auth") int status) {
 
-        Set<Class<?>> classes = new HashSet<>();
-
-        classes.add(HelloController.class);
-        classes.add(LoginController.class);
-
-        return classes;
+        if(status == -1) {
+            models.put("msg", "login failed");
+        }
     }
 
+    @POST
+//    public Response login(@FormParam("name") String name, @FormParam("password") String password) {
+    public Response login() {
+        return Response.ok("redirect:hello").build();
+    }
+    
+    @POST
+    @Path("logout")
+    public Response logout(@Context HttpServletRequest request) throws ServletException {
+        
+        request.logout();        
+        return Response.ok("redirect:login").build();
+    }
 }
