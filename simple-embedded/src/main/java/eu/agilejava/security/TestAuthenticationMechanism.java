@@ -23,6 +23,7 @@
  */
 package eu.agilejava.security;
 
+import java.io.IOException;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.security.auth.message.AuthException;
@@ -37,13 +38,9 @@ import javax.security.identitystore.credential.UsernamePasswordCredential;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Ivar Grimstad (ivar.grimstad@gmail.com)
- */
 @RequestScoped
 public class TestAuthenticationMechanism implements HttpAuthenticationMechanism {
-    
+
     @Inject
     private IdentityStore identityStore;
 
@@ -62,7 +59,7 @@ public class TestAuthenticationMechanism implements HttpAuthenticationMechanism 
             // Delegate the {credentials in -> identity data out} function to
             // the Identity Store
             CredentialValidationResult result = identityStore.validate(
-                new UsernamePasswordCredential(name, password));
+                    new UsernamePasswordCredential(name, password));
 
             if (result.getStatus() == VALID) {
                 // Communicate the details of the authenticated user to the
@@ -70,13 +67,14 @@ public class TestAuthenticationMechanism implements HttpAuthenticationMechanism 
                 // and the container will actually handle the login after we return from 
                 // this method.
                 return httpMessageContext.notifyContainerAboutLogin(
-                    result.getCallerPrincipal(), result.getCallerGroups());
+                        result.getCallerPrincipal(), result.getCallerGroups());
             } else {
-                throw new AuthException("Login failed");
+                
+                return httpMessageContext.responseUnAuthorized();
             }
-        } 
+        }
 
         return httpMessageContext.doNothing();
     }
-    
+
 }
