@@ -17,7 +17,8 @@
     </properties>
    
     <modules>
-        <module>simple-embedded</module>
+        <module>simple-embedded-mvc</module>
+        <module>simple-embedded-jsf</module>
     </modules>
 
     <repositories>
