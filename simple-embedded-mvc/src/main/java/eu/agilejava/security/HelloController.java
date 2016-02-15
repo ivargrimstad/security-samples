@@ -23,7 +23,6 @@
  */
 package eu.agilejava.security;
 
-import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.mvc.Models;
 import javax.mvc.annotation.Controller;
@@ -37,7 +36,6 @@ import javax.ws.rs.core.SecurityContext;
  *
  * @author Ivar Grimstad (ivar.grimstad@gmail.com)
  */
-@RolesAllowed("foo")
 @Path("hello")
 @Controller
 public class HelloController {

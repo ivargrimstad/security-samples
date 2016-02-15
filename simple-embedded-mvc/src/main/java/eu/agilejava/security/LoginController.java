@@ -59,7 +59,7 @@ public class LoginController {
     }
 
     @POST
-//    public Response login(@FormParam("name") String name, @FormParam("password") String password) {
+//    public Response login(@FormParam("name") String name, @FormParam("password") String password, @Context HttpServletRequest request) throws ServletException{
     public Response login() {
         return Response.ok("redirect:hello").build();
     }
