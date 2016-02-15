@@ -58,14 +58,14 @@ public class TestAuthenticationMechanism implements HttpAuthenticationMechanism 
     @Override
     public AuthStatus validateRequest(HttpServletRequest request, HttpServletResponse response, HttpMessageContext httpMessageContext) throws AuthException {
 
-        if (request.getParameter("name") != null && request.getParameter("password") != null) {
+        if (request.getParameter("j_idt6:j_idt9") != null && request.getParameter("j_idt6:j_idt11") != null) {
 
             // Get the (caller) name and password from the request
             // NOTE: This is for the smallest possible example only. In practice
             // putting the password in a request query parameter is highly
             // insecure
-            String name = request.getParameter("name");
-            Password password = new Password(request.getParameter("password"));
+            String name = request.getParameter("j_idt6:j_idt9");
+            Password password = new Password(request.getParameter("j_idt6:j_idt11"));
 
             // Delegate the {credentials in -> identity data out} function to
             // the Identity Store

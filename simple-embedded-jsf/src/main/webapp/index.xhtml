@@ -7,6 +7,21 @@
     </h:head>
     <h:body>
         Hello from Facelets
+
+        <h:form>
+            <h:panelGrid class="table_padding" columns="2">
+                <h:outputText value="Username" />
+                <h:inputText binding="#{loginBean.username}" maxlength="255" required="true" requiredMessage="Please enter a username" />
+
+                <h:outputText value="Password" />
+                <h:inputSecret binding="#{loginBean.password}" maxlength="255" required="true" requiredMessage="Please enter a password"/>
+
+                <h:outputText />
+                <h:commandButton value="Login" action="#{loginBean.login()}"/>
+            </h:panelGrid>
+            <br />
+        </h:form>
+
     </h:body>
 </html>
 

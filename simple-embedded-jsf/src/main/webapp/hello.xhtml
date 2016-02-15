@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Soteria JSF</title>
+    </h:head>
+    <h:body>
+        <h1>Hello from Facelets</h1>
+        
+        Web username: <b>#{request.getUserPrincipal().getName()}</b><br/>
+        Web user has role "foo": <b>#{request.isUserInRole("foo")}</b><br/>
+        Web user has role "bar": <b>#{request.isUserInRole("bar")}</b><br/>
+        Web user has role "kaz": <b>#{request.isUserInRole("kaz")}</b><br/>
+        
+    </h:body>
+</html>
+
