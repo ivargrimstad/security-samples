@@ -50,7 +50,7 @@ import javax.servlet.http.HttpServletResponse;
 @DeclareRoles({"foo", "bar", "kaz"})
 @AutoApplySession
 @RequestScoped
-public class TestAuthenticationMechanism implements HttpAuthenticationMechanism {
+public class JSFAuthenticationMechanism implements HttpAuthenticationMechanism {
 
     @Inject
     private IdentityStore identityStore;
