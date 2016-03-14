@@ -19,7 +19,7 @@
         Web user has role "bar": <b>${hasBar}</b><br/>
         Web user has role "kaz": <b>${hasKaz}</b><br/>
         
-        <form name="form" action="${mvc.basePath}/login/logout" method="post">
+        <form name="form" action="${mvc.basePath}/login" method="post">
             <p>
                 <input type="submit" value="Logout" name="button"/>
             </p>

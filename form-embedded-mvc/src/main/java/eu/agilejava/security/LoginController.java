@@ -4,9 +4,13 @@ import javax.inject.Inject;
 import javax.mvc.Models;
 import javax.mvc.annotation.Controller;
 import javax.mvc.annotation.View;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 
 /*
  * The MIT License
@@ -41,13 +45,20 @@ public class LoginController {
 
     @Inject
     private Models models;
-    
+
     @GET
     @View("login.jsp")
     public void loginForm(@QueryParam("auth") int status) {
 
-        if(status == -1) {
+        if (status == -1) {
             models.put("msg", "login failed");
         }
+    }
+    
+    @POST
+    @View("login.jsp")
+    public void logout(@Context HttpServletRequest request) throws ServletException {
+        request.logout();
+        request.getSession().invalidate();
     }
 }
