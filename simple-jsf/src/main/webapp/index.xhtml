@@ -8,13 +8,13 @@
     <h:body>
         Hello from Facelets
 
-        <h:form>
+        <h:form id="login">
             <h:panelGrid class="table_padding" columns="2">
                 <h:outputText value="Username" />
-                <h:inputText binding="#{loginBean.username}" maxlength="255" required="true" requiredMessage="Please enter a username" />
+                <h:inputText id="username" binding="#{loginBean.username}" maxlength="255" required="true" requiredMessage="Please enter a username" />
 
                 <h:outputText value="Password" />
-                <h:inputSecret binding="#{loginBean.password}" maxlength="255" required="true" requiredMessage="Please enter a password"/>
+                <h:inputSecret id="password" binding="#{loginBean.password}" maxlength="255" required="true" requiredMessage="Please enter a password"/>
 
                 <h:outputText />
                 <h:commandButton value="Login" action="#{loginBean.login()}"/>
