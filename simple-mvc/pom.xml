@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>eu.agilejava</groupId>
-    <artifactId>simple-embedded-mvc</artifactId>
+    <artifactId>simple-mvc</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>simple-embedded-mvc</name>
+    <name>simple-mvc</name>
 
     <parent>
         <groupId>eu.agilejava</groupId>

@@ -17,9 +17,9 @@
     </properties>
    
     <modules>
-        <module>simple-embedded-mvc</module>
-        <module>simple-embedded-jsf</module>
-        <module>form-embedded-mvc</module>
+        <module>simple-mvc</module>
+        <module>simple-jsf</module>
+        <module>form-mvc</module>
     </modules>
 
     <repositories>
