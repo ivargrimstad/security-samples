@@ -26,8 +26,6 @@ package eu.agilejava.security;
 import java.util.HashSet;
 import java.util.Set;
 import javax.annotation.security.DeclareRoles;
-import javax.security.identitystore.annotation.Credentials;
-import javax.security.identitystore.annotation.EmbeddedIdentityStoreDefinition;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
@@ -35,12 +33,6 @@ import javax.ws.rs.core.Application;
  *
  * @author Ivar Grimstad (ivar.grimstad@gmail.com)
  */
-@EmbeddedIdentityStoreDefinition({
-    @Credentials(callerName = "reza", password = "secret1", groups = {"foo", "bar"}),
-    @Credentials(callerName = "alex", password = "secret2", groups = {"foo", "kaz"}),
-    @Credentials(callerName = "arjan", password = "secret3", groups = {"foo"}),
-    @Credentials(callerName = "ivar", password = "secret4", groups = {"bar"})}
-)
 @DeclareRoles({"foo", "bar", "kaz"})
 @ApplicationPath("ui")
 public class ApplicationConfig extends Application {

@@ -26,10 +26,8 @@ package eu.agilejava.security;
 import java.util.HashSet;
 import java.util.Set;
 import javax.annotation.security.DeclareRoles;
-import javax.security.authentication.mechanism.http.annotation.FormAuthenticationMechanismDefinition;
-import javax.security.authentication.mechanism.http.annotation.LoginToContinue;
-import javax.security.identitystore.annotation.Credentials;
-import javax.security.identitystore.annotation.EmbeddedIdentityStoreDefinition;
+import javax.security.enterprise.authentication.mechanism.http.FormAuthenticationMechanismDefinition;
+import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
@@ -41,12 +39,6 @@ import javax.ws.rs.core.Application;
         loginToContinue = @LoginToContinue(
                 loginPage = "/ui/login",
                 errorPage = "/ui/login?auth=-1"))
-@EmbeddedIdentityStoreDefinition({
-    @Credentials(callerName = "reza", password = "secret1", groups = {"foo", "bar"}),
-    @Credentials(callerName = "alex", password = "secret2", groups = {"foo", "kaz"}),
-    @Credentials(callerName = "arjan", password = "secret3", groups = {"foo"}),
-    @Credentials(callerName = "ivar", password = "secret4", groups = {"bar"})}
-)
 @DeclareRoles({"foo", "bar", "kaz"})
 @ApplicationPath("ui")
 public class ApplicationConfig extends Application {

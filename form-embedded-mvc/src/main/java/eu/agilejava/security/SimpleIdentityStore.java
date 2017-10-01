@@ -1,21 +1,7 @@
-package eu.agilejava.security;
-
-import javax.inject.Inject;
-import javax.mvc.Models;
-import javax.mvc.annotation.Controller;
-import javax.mvc.annotation.View;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Context;
-
 /*
  * The MIT License
  *
- * Copyright 2016 Ivar Grimstad (ivar.grimstad@gmail.com).
+ * Copyright 2017 Ivar Grimstad (ivar.grimstad@gmail.com).
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,31 +21,34 @@ import javax.ws.rs.core.Context;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package eu.agilejava.security;
+
+import static java.util.Arrays.asList;
+import java.util.HashSet;
+import javax.enterprise.context.ApplicationScoped;
+import javax.security.enterprise.credential.Credential;
+import javax.security.enterprise.credential.UsernamePasswordCredential;
+import javax.security.enterprise.identitystore.CredentialValidationResult;
+import static javax.security.enterprise.identitystore.CredentialValidationResult.INVALID_RESULT;
+import javax.security.enterprise.identitystore.IdentityStore;
+
 /**
  *
  * @author Ivar Grimstad (ivar.grimstad@gmail.com)
  */
-@Path("login")
-@Controller
-public class LoginController {
+@ApplicationScoped
+public class SimpleIdentityStore implements IdentityStore {
 
-    @Inject
-    private Models models;
+    @Override
+    public CredentialValidationResult validate(Credential credential) {
 
-    @GET
-    @View("login.jsp")
-    public void loginForm(@QueryParam("auth") int status) {
-
-        if (status == -1) {
-            models.put("msg", "login failed");
-        }
-    }
-    
-    @POST
-    public String logout(@Context HttpServletRequest request) throws ServletException {
-        request.logout();
-        request.getSession().invalidate();
+        UsernamePasswordCredential user = (UsernamePasswordCredential) credential;
         
-        return "redirect:hello";
+        if (user.getCaller().equalsIgnoreCase("Duke") && user.getPasswordAsString().equalsIgnoreCase("Dance")) {
+        
+           return new CredentialValidationResult("Duke",new HashSet<>(asList("foo", "bar")));
+        }
+
+        return INVALID_RESULT;
     }
 }

@@ -27,26 +27,28 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.security.auth.message.AuthException;
 import javax.security.auth.message.AuthStatus;
-import javax.security.authentication.mechanism.http.HttpAuthenticationMechanism;
-import javax.security.authentication.mechanism.http.HttpMessageContext;
-import javax.security.authentication.mechanism.http.annotation.AutoApplySession;
-import javax.security.identitystore.CredentialValidationResult;
-import static javax.security.identitystore.CredentialValidationResult.Status.VALID;
-import javax.security.identitystore.IdentityStore;
-import javax.security.identitystore.credential.Password;
-import javax.security.identitystore.credential.UsernamePasswordCredential;
+import javax.security.enterprise.AuthenticationException;
+import javax.security.enterprise.AuthenticationStatus;
+import javax.security.enterprise.authentication.mechanism.http.AutoApplySession;
+import javax.security.enterprise.authentication.mechanism.http.HttpAuthenticationMechanism;
+import javax.security.enterprise.authentication.mechanism.http.HttpMessageContext;
+import javax.security.enterprise.credential.Password;
+import javax.security.enterprise.credential.UsernamePasswordCredential;
+import javax.security.enterprise.identitystore.CredentialValidationResult;
+import static javax.security.enterprise.identitystore.CredentialValidationResult.Status.VALID;
+import javax.security.enterprise.identitystore.IdentityStore;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @AutoApplySession
 @RequestScoped
-public class TestAuthenticationMechanism implements HttpAuthenticationMechanism {
+public class SimpleAuthenticationMechanism implements HttpAuthenticationMechanism {
 
     @Inject
     private IdentityStore identityStore;
 
     @Override
-    public AuthStatus validateRequest(HttpServletRequest request, HttpServletResponse response, HttpMessageContext httpMessageContext) throws AuthException {
+    public AuthenticationStatus validateRequest(HttpServletRequest request, HttpServletResponse response, HttpMessageContext httpMessageContext) throws AuthenticationException {
 
         if (request.getParameter("name") != null && request.getParameter("password") != null) {
 
@@ -70,7 +72,7 @@ public class TestAuthenticationMechanism implements HttpAuthenticationMechanism 
                 return httpMessageContext.notifyContainerAboutLogin(
                         result.getCallerPrincipal(), result.getCallerGroups());
             } else {
-                return httpMessageContext.responseUnAuthorized();
+                return httpMessageContext.responseUnauthorized();
             }
         }
 
