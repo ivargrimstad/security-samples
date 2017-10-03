@@ -23,17 +23,17 @@
             <scope>provided</scope>
         </dependency>
         
-        <!-- Needed until Java EE 8-->        
         <dependency>
             <groupId>javax.mvc</groupId>
             <artifactId>javax.mvc-api</artifactId>
-            <version>1.0-edr2</version>
-        </dependency>
-        
+        </dependency>       
         <dependency>
-            <groupId>org.glassfish.ozark</groupId>
-            <artifactId>ozark</artifactId>
-            <version>1.0.0-m02</version>
+            <groupId>org.mvc-spec.ozark</groupId>
+            <artifactId>ozark-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mvc-spec.ozark</groupId>
+            <artifactId>ozark-jersey</artifactId>
         </dependency>
         
     </dependencies>
