@@ -18,7 +18,7 @@
         <url-pattern>*.jsf</url-pattern>
     </servlet-mapping>
     
-<!--    <security-constraint>
+    <security-constraint>
         <web-resource-collection>
             <web-resource-name>Hello</web-resource-name>
             <url-pattern>/hello.jsf</url-pattern>
@@ -26,7 +26,7 @@
         <auth-constraint>
             <role-name>foo</role-name>
         </auth-constraint>
-    </security-constraint>-->
+    </security-constraint>
     
     <security-constraint>
         <display-name>Restrict direct access to XHTML files</display-name>

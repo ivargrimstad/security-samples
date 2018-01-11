@@ -1,0 +1,3 @@
+= Soteria + MVC 1.0
+
+A simple example showing how to configure Java EE Security 1.0 for MVC 1.0 applications.
