@@ -1,0 +1,9 @@
+
+
+http GET 'http://localhost:8080/security-jwt-example/api/auth/login?name=duke&password=secret&rememberme=false'
+http GET 'http://localhost:8080/security-jwt-example/api/auth/login?name=payara&password=fish&rememberme=false'
+
+http GET http://localhost:8080/security-jwt-example/api/sample/read
+http POST http://localhost:8080/security-jwt-example/api/sample/write
+http DELETE http://localhost:8080/security-jwt-example/api/sample/delete
+

@@ -45,7 +45,7 @@ public class HelloController {
 
     @Context
     private SecurityContext securityContext;
-    
+
     @View("hello.jsp")
     @GET
     public void greet() {
