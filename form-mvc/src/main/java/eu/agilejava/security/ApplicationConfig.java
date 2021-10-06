@@ -23,13 +23,14 @@
  */
 package eu.agilejava.security;
 
+import jakarta.annotation.security.DeclareRoles;
+import jakarta.security.enterprise.authentication.mechanism.http.FormAuthenticationMechanismDefinition;
+import jakarta.security.enterprise.authentication.mechanism.http.LoginToContinue;
+import jakarta.ws.rs.ApplicationPath;
+import jakarta.ws.rs.core.Application;
+
 import java.util.HashSet;
 import java.util.Set;
-import javax.annotation.security.DeclareRoles;
-import javax.security.enterprise.authentication.mechanism.http.FormAuthenticationMechanismDefinition;
-import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
 
 /**
  *

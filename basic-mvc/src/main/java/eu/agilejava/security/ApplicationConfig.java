@@ -23,24 +23,23 @@
  */
 package eu.agilejava.security;
 
+import jakarta.annotation.security.DeclareRoles;
+import jakarta.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
+import jakarta.ws.rs.ApplicationPath;
+import jakarta.ws.rs.core.Application;
+
 import java.util.HashSet;
 import java.util.Set;
-import javax.annotation.security.DeclareRoles;
-import javax.security.enterprise.authentication.mechanism.http.BasicAuthenticationMechanismDefinition;
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
-import org.glassfish.soteria.identitystores.annotation.Credentials;
-import org.glassfish.soteria.identitystores.annotation.EmbeddedIdentityStoreDefinition;
 
 /**
  *
  * @author Ivar Grimstad (ivar.grimstad@gmail.com)
  */
 @BasicAuthenticationMechanismDefinition(realmName = "My App")
-@EmbeddedIdentityStoreDefinition({ 
-    @Credentials(callerName = "duke", password = "dance", groups = { "foo", "bar" }),
-    @Credentials(callerName = "kirk", password = "kahn!", groups = { "foo", "kaz" })}
-)
+//@EmbeddedIdentityStoreDefinition({
+//    @Credentials(callerName = "duke", password = "dance", groups = { "foo", "bar" }),
+//    @Credentials(callerName = "kirk", password = "kahn!", groups = { "foo", "kaz" })}
+//)
 @DeclareRoles({"foo", "bar", "kaz"})
 @ApplicationPath("ui")
 public class ApplicationConfig extends Application {

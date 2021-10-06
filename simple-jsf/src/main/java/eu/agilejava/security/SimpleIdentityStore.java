@@ -23,14 +23,14 @@
  */
 package eu.agilejava.security;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.security.enterprise.credential.Credential;
+import jakarta.security.enterprise.credential.UsernamePasswordCredential;
+import jakarta.security.enterprise.identitystore.CredentialValidationResult;
+import jakarta.security.enterprise.identitystore.IdentityStore;
+
 import static java.util.Arrays.asList;
 import java.util.HashSet;
-import javax.enterprise.context.ApplicationScoped;
-import javax.security.enterprise.credential.Credential;
-import javax.security.enterprise.credential.UsernamePasswordCredential;
-import javax.security.enterprise.identitystore.CredentialValidationResult;
-import static javax.security.enterprise.identitystore.CredentialValidationResult.INVALID_RESULT;
-import javax.security.enterprise.identitystore.IdentityStore;
 
 /**
  *
@@ -49,6 +49,6 @@ public class SimpleIdentityStore implements IdentityStore {
            return new CredentialValidationResult("Duke",new HashSet<>(asList("foo", "bar")));
         }
 
-        return INVALID_RESULT;
+        return CredentialValidationResult.INVALID_RESULT;
     }
 }

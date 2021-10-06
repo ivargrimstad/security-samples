@@ -17,25 +17,17 @@
        
     <dependencies>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>8.0</version>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>9.1.0</version>
             <scope>provided</scope>
         </dependency>
-        
+
         <dependency>
-            <groupId>javax.mvc</groupId>
-            <artifactId>javax.mvc-api</artifactId>
-        </dependency>       
-        <dependency>
-            <groupId>org.mvc-spec.ozark</groupId>
-            <artifactId>ozark-core</artifactId>
+            <groupId>jakarta.mvc</groupId>
+            <artifactId>jakarta.mvc-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.mvc-spec.ozark</groupId>
-            <artifactId>ozark-jersey</artifactId>
-        </dependency>
-        
+
     </dependencies>
    
 </project>

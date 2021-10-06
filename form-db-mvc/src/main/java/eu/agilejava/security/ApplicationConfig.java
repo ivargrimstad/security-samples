@@ -23,15 +23,16 @@
  */
 package eu.agilejava.security;
 
+import jakarta.annotation.security.DeclareRoles;
+import jakarta.security.enterprise.authentication.mechanism.http.FormAuthenticationMechanismDefinition;
+import jakarta.security.enterprise.authentication.mechanism.http.LoginToContinue;
+import jakarta.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
+import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
+import jakarta.ws.rs.ApplicationPath;
+import jakarta.ws.rs.core.Application;
+
 import java.util.HashSet;
 import java.util.Set;
-import javax.annotation.security.DeclareRoles;
-import javax.security.enterprise.authentication.mechanism.http.FormAuthenticationMechanismDefinition;
-import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
-import javax.security.enterprise.identitystore.DatabaseIdentityStoreDefinition;
-import javax.security.enterprise.identitystore.Pbkdf2PasswordHash;
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
 
 @DatabaseIdentityStoreDefinition(
     dataSourceLookup = "${'java:global/MyDS'}",

@@ -1,16 +1,5 @@
 package eu.agilejava.security;
 
-import javax.inject.Inject;
-import javax.mvc.Models;
-import javax.mvc.annotation.Controller;
-import javax.mvc.annotation.View;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Context;
 
 /*
  * The MIT License
@@ -35,6 +24,19 @@ import javax.ws.rs.core.Context;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
+import jakarta.inject.Inject;
+import jakarta.mvc.Controller;
+import jakarta.mvc.Models;
+import jakarta.mvc.View;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.core.Context;
+
 /**
  *
  * @author Ivar Grimstad (ivar.grimstad@gmail.com)

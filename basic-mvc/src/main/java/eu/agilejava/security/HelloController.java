@@ -23,14 +23,15 @@
  */
 package eu.agilejava.security;
 
-import javax.inject.Inject;
-import javax.mvc.Models;
-import javax.mvc.annotation.Controller;
-import javax.mvc.annotation.View;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.SecurityContext;
+
+import jakarta.inject.Inject;
+import jakarta.mvc.Controller;
+import jakarta.mvc.Models;
+import jakarta.mvc.View;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.SecurityContext;
 
 /**
  *
