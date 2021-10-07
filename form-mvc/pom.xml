@@ -8,6 +8,9 @@
     <packaging>war</packaging>
 
     <name>form-mvc</name>
+    <build>
+        <finalName>form-mvc</finalName>
+    </build>
 
     <parent>
         <groupId>eu.agilejava</groupId>
