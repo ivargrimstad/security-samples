@@ -9,7 +9,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" href="${mvc.contextPath}/img/favicon.ico" type="image/x-icon" />
         <title>Soteria MVC</title>
     </head>
     <body>

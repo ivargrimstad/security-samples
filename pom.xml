@@ -13,7 +13,6 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-        <netbeans.hint.license>mit</netbeans.hint.license>
     </properties>
    
     <modules>

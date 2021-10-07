@@ -9,12 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="icon" href="${mvc.contextPath}/img/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="${mvc.basePath}/img/favicon.ico" type="image/x-icon" />
         <title>Soteria MVC</title>
     </head>
     <body>
         <h1>Login</h1>
-        <form name="form" action="${mvc.contextPath}/j_security_check" method="post">
+        <form name="form" action="${mvc.basePath}/j_security_check" method="post">
             <p>
                 <label id="name">Name:</label>
                 <input type="text" name="j_username" value="" />

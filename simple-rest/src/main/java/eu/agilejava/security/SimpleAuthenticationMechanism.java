@@ -31,28 +31,33 @@ import jakarta.security.enterprise.authentication.mechanism.http.HttpMessageCont
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import static java.util.Arrays.asList;
 import java.util.HashSet;
+import java.util.logging.Logger;
+
+import static java.util.Arrays.asList;
 
 @ApplicationScoped
 public class SimpleAuthenticationMechanism implements HttpAuthenticationMechanism {
 
+    private static final Logger LOGGER = Logger.getLogger("eu.agilejava.dukes");
+
     @Override
     public AuthenticationStatus validateRequest(HttpServletRequest request, HttpServletResponse response, HttpMessageContext httpMessageContext) throws AuthenticationException {
 
-        if (request.getHeader("MY-API-KEY") != null && request.getHeader("MY-API-KEY") != null) {
-
-            final String key = request.getHeader("MY-API-KEY");
-
-            if (key != null && key.equalsIgnoreCase("DUKE ROCKS")) {
-
-                return httpMessageContext.notifyContainerAboutLogin(
-                        "app", new HashSet<>(asList("foo")));
-            } else {
-                return httpMessageContext.responseUnauthorized();
-            }
+        if (!request.getRequestURI().contains("protected")) {
+            LOGGER.warning(() -> "Do nothing");
+            return httpMessageContext.doNothing();
         }
 
-        return httpMessageContext.doNothing();
+        final String key = request.getHeader("MY-API-KEY");
+        if (key != null && key.equalsIgnoreCase("DUKE ROCKS")) {
+
+            LOGGER.warning(() -> "Everything fine!");
+            return httpMessageContext.notifyContainerAboutLogin(
+                    "app", new HashSet<>(asList("foo")));
+        }
+
+        LOGGER.warning(() -> "Unauthorized");
+        return httpMessageContext.responseUnauthorized();
     }
 }
